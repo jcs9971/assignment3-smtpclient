@@ -54,6 +54,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # clientSocket.send(msg.encode())
     message = raw_input("Enter your message: \r\n")
     clientSocket.send(message.encode())
+    recv1 = clientSocket.recv(1024)
     clientSocket.send(endmsg.encode())
     recv1 = clientSocket.recv(1024)
     #print(recv1)
