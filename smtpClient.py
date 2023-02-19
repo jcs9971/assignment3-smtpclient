@@ -48,13 +48,10 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
         print('354 reply not received from server.')
 
     # Send message data.
-    #subject = "Subject: SMTP Mail Client \r\n\r\n"
-    #clientSocket.send(subject.encode())
-    #clientSocket.send(msg.encode())
-    # clientSocket.send(msg.encode())
-    message = raw_input("Enter your message: \r\n")
-    clientSocket.send(message.encode())
-    recv1 = clientSocket.recv(1024)
+    clientSocket.send(msg.encode())
+    #print(recv1)
+    
+    # Message ends with a single period, send message end and handle server response.
     clientSocket.send(endmsg.encode())
     recv1 = clientSocket.recv(1024)
     #print(recv1)
