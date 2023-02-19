@@ -65,7 +65,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     #print(recv1)
     if recv1[:3] != '250':
         print('250 reply not received from server.')
-    clientsocket.close()
+    #clientsocket.close()
 
 if __name__ == '__main__':
     smtp_client(1025, '127.0.0.1')
