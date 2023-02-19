@@ -1,7 +1,7 @@
 from socket import *
 
 def smtp_client(port=1025, mailserver='127.0.0.1'):
-    msg = "\r\n My To Infinity and Beyond"
+    msg = "\r\n To Infinity and Beyond"
     endmsg = "\r\n.\r\n"
 
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
@@ -18,7 +18,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
         print('220 reply not received from server.')
 
     # Send HELLO command and print server response.
-    hello = 'HELO Alice\r\n'
+    hello = 'HELLO Alice\r\n'
     clientSocket.send(hello.encode())
     recv1 = clientSocket.recv(1024).decode()
     print(recv1)
@@ -34,7 +34,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
         print('250 reply not received from server.')
 
     # Send RCPT TO command and handle server response.
-    rcptTo = '<alteregojcsully@mail.com> \r\n'
+    rcptTo = '<alice@mail.com> \r\n'
     recv3 = clientSocket.recv(1024).decode()
     print(recv3)
     if recv3[:3] != '250':
