@@ -28,44 +28,42 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send MAIL FROM command and handle server response.
     mailFrom = "MAIL FROM: <jcsully@mail.com>\r\n"
     clientSocket.send(mailFrom.encode())
-    recv2 = clientSocket.recv(1024).decode()
-    #print(recv2)
-    if recv2[:3] != '250':
+    recv1 = clientSocket.recv(1024).decode()
+    #print(recv1)
+    if recv1[:3] != '250':
         print('250 reply not received from server.')
 
     # Send RCPT TO command and handle server response.
     rcptTo = '<alice@mail.com>\r\n'
-    recv3 = clientSocket.recv(1024).decode()
-    #print(recv3)
-    if recv3[:3] != '250':
+    recv1 = clientSocket.recv(1024).decode()
+    #print(recv1)
+    if recv1[:3] != '250':
         print('250 reply not received from server.')
 
 
     # Send DATA command and handle server response.
     data = "DATA\r\n"
     clientSocket.send(data.encode())
-    recv4 = clientSocket.recv(1024).decode()
-    #print(recv4)
-    if recv4[:3] != '250':
+    recv1 = clientSocket.recv(1024).decode()
+    #print(recv1)
+    if recv1[:3] != '250':
         print('250 reply not received from server.')
 
     # Send message data.
-    #input = raw_input("Enter your message: \r\n")
-    #clientSocket.send(input.encode())
     clientSocket.send(msg.encode())
     # Message ends with a single period, send message end and handle server response.
     clientSocket.send(endmsg.encode())
-    recv5 = clientSocket.recv(1024).decode()
-    #print(recv5)
-    if recv5[:3] != '250':
+    recv1 = clientSocket.recv(1024).decode()
+    #print(recv1)
+    if recv1[:3] != '250':
         print('250 reply not received from server.')
 
     # Send QUIT command and handle server response.
     quit = "QUIT\r\n"
     clientSocket.send(quit.encode())
-    recv6 = clientSocket.recv(1024).decode()
-    #print(recv6)
-    if recv6[:3] != '250':
+    recv1 = clientSocket.recv(1024).decode()
+    #print(recv1)
+    if recv1[:3] != '250':
         print('250 reply not received from server.')
     clientsocket.Close()
 
