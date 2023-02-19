@@ -1,7 +1,7 @@
 from socket import *
 
 def smtp_client(port=1025, mailserver='127.0.0.1'):
-    msg = "\r\n To Infinity and Beyond"
+    msg = "\r\nTo Infinity and Beyond"
     endmsg = "\r\n.\r\n"
 
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
@@ -26,7 +26,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
         print('220 reply not received from server.')
 
     # Send MAIL FROM command and handle server response.
-    mailFrom = "MAIL FROM: <jcsully@mail.com> \r\n"
+    mailFrom = "MAIL FROM: <jcsully@mail.com>\r\n"
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024).decode()
     #print(recv2)
@@ -34,7 +34,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
         print('250 reply not received from server.')
 
     # Send RCPT TO command and handle server response.
-    rcptTo = '<alice@mail.com> \r\n'
+    rcptTo = '<alice@mail.com>\r\n'
     recv3 = clientSocket.recv(1024).decode()
     #print(recv3)
     if recv3[:3] != '250':
@@ -43,7 +43,6 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send DATA command and handle server response.
     data = "DATA\r\n"
-    #print(data)
     clientSocket.send(data.encode())
     recv4 = clientSocket.recv(1024).decode()
     #print(recv4)
@@ -51,10 +50,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
         print('250 reply not received from server.')
 
     # Send message data.
-    msggreeting = "Greetings from Planet Earth \r\n\r\n"
-    clientSocket.send(msggreeting.encode())
-    input = raw_input("Enter your message: \r\n")
-    clientSocket.send(input.encode())
+    #input = raw_input("Enter your message: \r\n")
+    #clientSocket.send(input.encode())
     clientSocket.send(msg.encode())
     # Message ends with a single period, send message end and handle server response.
     clientSocket.send(endmsg.encode())
